@@ -1,0 +1,25 @@
+name: Delopy hello world
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: install rust stable toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+  job_2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        uses: actions/checkout@v5.0
+      - run: |
+          cargo install cargo-watch
+          cargo watch -x check -x test -x run
