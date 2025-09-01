@@ -24,6 +24,11 @@ jobs:
       - run: |
           cargo test
           cargo run
+      - name: Upload artifacts
+        uses: actions/artifact@v3
+        with:
+          name: dist-files
+          path: dist
 
   build:
     runs-on: ubuntu-latest
